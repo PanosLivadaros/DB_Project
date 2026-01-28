@@ -1,0 +1,3 @@
+SELECT first_name, last_name FROM Coaches INNER JOIN (SELECT home_team_id, away_team_id, match_date FROM Matches WHERE match_id = <matchId> AND home_team_id = <teamId>) AS selected_1_query_a ON (home_team_id = team_id AND match_date >= start_date AND match_date < end_date)
+UNION
+SELECT first_name, last_name FROM Coaches INNER JOIN (SELECT home_team_id, away_team_id, match_date FROM Matches WHERE match_id = <matchId> AND away_team_id = <teamId>) AS selected_2_query_a ON (away_team_id = team_id AND match_date >= start_date AND match_date < end_date);
